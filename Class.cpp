@@ -17,7 +17,7 @@ void Class::display()
 {
     for(List_t::iterator it = List.begin(); it!=List.end(); it++)
     {
-        std::cout << *it <<":";
+        printf("%s :", it->first);
     }
 
     std::cout << '\n';
@@ -36,17 +36,17 @@ Class::List_t::iterator  Class::binarySearch(Class::List_t::iterator start,
 
     while ((std::distance(start,end) > 0) && (triggerFound == false))
     {
-        mid = start +  ((end - start) / 2);
+        mid = start +  ( (std::distance(start,end))/ 2);
 
         // searched string is bigger (or after in the lexical order)
         // than the one in mid value
-        if(std::strcmp(searched, *mid) > 0)
+        if(std::strcmp(searched, mid->first) > 0)
         {
            start = mid+1;
         }
         // searched string is lower (or before in the lexical order)
         // than the one in mid value
-        else if (std::strcmp(searched, *mid) < 0)
+        else if (std::strcmp(searched, mid->first) < 0)
         {
             end = mid;
         }

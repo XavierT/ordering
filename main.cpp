@@ -8,12 +8,10 @@ int main()
 {
     Class OneRandom;
 
-	printf( "\nHello World\n\n" );
-    
 
-    OneRandom.List.push_back("one");
-    OneRandom.List.push_back("two");
-    OneRandom.List.push_back("three");
+    OneRandom.List.push_back(std::make_pair("1_test", 1));
+    OneRandom.List.push_back(std::make_pair("100_test", 2));
+    OneRandom.List.push_back(std::make_pair("350_test", 3));
 
     OneRandom.display();
 
@@ -23,23 +21,16 @@ int main()
 
     Class::List_t::iterator it = OneRandom.binarySearch(OneRandom.List.begin(),OneRandom.List.end(),"two");
 
-    std::cout  <<"begin \t" << &OneRandom.List[0] <<"\n";
-    std::cout  <<"end \t" << &OneRandom.List[3] <<"\n";
-
     std::cout << "result \n";
 
-    std::cout <<  *it <<" found \n";
+    std::cout <<  it->first <<" found \n";
 
     it = OneRandom.binarySearch(OneRandom.List.begin(),OneRandom.List.end(),"glob");
 
     if(it != OneRandom.List.end() )
-        std::cout << *it <<" found \n";
+        std::cout << it->first <<" found \n";
     else
         std::cout <<  "not found\n";
-
-
-
-
 
 
     return 0;

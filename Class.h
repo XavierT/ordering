@@ -10,21 +10,22 @@ public:
 
     ~Class();
 
-    typedef std::vector<const char *> List_t;
+    typedef std::pair<const char *, int> Pair_t;
+    typedef std::vector<Pair_t> List_t;
     List_t List;
 
     void display();
 
     struct comparator
     {
-        bool operator() (const char * a, const char * b)
+        bool operator() (Pair_t a, Pair_t  b)
         {
-            return std::strcmp(a,b) < 0;
+            return std::strcmp(a.first,b.first) < 0;
         }
     }MyComp;
 
     List_t::iterator  binarySearch(List_t::iterator first,
-                                          List_t::iterator end, 
-                                          const char * searchString);
+                                  List_t::iterator end, 
+                                  const char * searchString);
 };
 
